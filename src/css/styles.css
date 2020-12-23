@@ -1,0 +1,148 @@
+body {
+  text-align: center;
+  /* background: #00ecb9; */
+  font-family: sans-serif;
+  font-weight: 100;
+  /* background-image: url("../img/milky-way-2695569_1920.jpg"); */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+
+  max-width: 1600px;
+  height: 600px;
+}
+
+h1 {
+  color: #396;
+  font-weight: 100;
+  font-size: 40px;
+  margin: 40px 0px 20px;
+}
+
+.timer {
+  font-family: sans-serif;
+  color: #fff;
+  display: inline-block;
+  font-weight: 100;
+  text-align: center;
+  font-size: 30px;
+
+  /* display: flex; */
+}
+
+.timer > div {
+  padding: 10px;
+  border-radius: 3px;
+  /* background: #00bf96; */
+  display: inline-block;
+}
+
+.timer div > span {
+  padding: 15px;
+  border-radius: 3px;
+  background: #00816a;
+  display: inline-block;
+}
+
+.smalltext {
+  padding-top: 5px;
+  font-size: 16px;
+}
+button {
+  display: block;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+
+  padding: 10px 30px;
+  border-radius: 3px;
+  margin-right: 10px;
+  width: 150px;
+  height: 50px;
+  font-size: 20px;
+
+  background-color: dodgerblue;
+  color: white;
+  cursor: pointer;
+  overflow: hidden;
+}
+.btn::after,
+.btn::before {
+  content: "";
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  margin-left: 25px;
+  /* background-color:teal; */
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn::before {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  margin-bottom: 3px;
+
+  background-image: url(../img/new-cat-grey.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.btn:hover::before,
+.btn:focus::before {
+  transform: translateY(-150%);
+}
+.btn::after {
+  transform: translateY(calc(+15% + 30px));
+  background-image: url(../img/giraf.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-top: 10px;
+}
+.btn:hover::after,
+.btn:focus::after {
+  transform: translateY(-5%);
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: coral;
+}
+
+.common {
+  display: flex;
+  align-items: center;
+}
+
+.btn-color {
+  padding: 10px 30px;
+  border-radius: 3px;
+  margin-right: 10px;
+  margin-top: 10px;
+
+  min-width: 150px;
+  height: 50px;
+  font-size: 20px;
+
+  background-color: dodgerblue;
+  color: white;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.btn-cont {
+  display: flex;
+  justify-content: center;
+}
+h2 {
+  margin-top: 150px;
+}
