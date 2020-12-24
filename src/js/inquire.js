@@ -20,18 +20,17 @@ input.addEventListener("input", debounce(onSearch, 2000));
 
 function onSearch(e) {
   e.preventDefault();
-
-  const searchQuery = e.currentTarget.value;
+  const searchQuery = e.value;
   console.log(searchQuery);
 }
 
-function debounce(callback, delay) {
-  let timeout;
-  return function () {
-    clearTimeout(timeout);
-    timeout = setTimeout(callback, delay);
-  };
-}
+// function debounce(callback, delay) {
+//   let timeout;
+//   return function () {
+//     clearTimeout(timeout);
+//     timeout = setTimeout(callback, delay);
+//   };
+// }
 
 let myFirstFetch = fetch(url);
 //console.log(myFirstFetch);
