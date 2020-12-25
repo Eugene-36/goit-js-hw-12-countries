@@ -18,19 +18,10 @@ let url = `https://restcountries.eu/rest/v2/name/${search}`;
 
 input.addEventListener("input", debounce(onSearch, 2000));
 
-function onSearch(e) {
-  e.preventDefault();
-  const searchQuery = e.value;
+function onSearch() {
+  const searchQuery = input.value;
   console.log(searchQuery);
 }
-
-// function debounce(callback, delay) {
-//   let timeout;
-//   return function () {
-//     clearTimeout(timeout);
-//     timeout = setTimeout(callback, delay);
-//   };
-// }
 
 let myFirstFetch = fetch(url);
 //console.log(myFirstFetch);
