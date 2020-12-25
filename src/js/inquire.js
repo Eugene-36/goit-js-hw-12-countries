@@ -1,51 +1,48 @@
 import templateFirst from "../template/first.hbs";
 import templateSecond from "../template/second.hbs";
-
 import debounce from "lodash.debounce";
 
 //console.log(debounce);
 
-//todo: Доступ к инпуту
-const input = document.querySelector(".control");
-//console.log(input);
+const refs = {
+  countryContainer: document.querySelector(".control"),
+  searchInput: document.querySelector(".country"),
+};
 
-//todo: Доступ к ul
-const access = document.querySelector(".country");
-//console.log(access);
+refs.searchInput.addEventListener("input", debounce(onSearch, 2000));
 
-let search = `Switzerland`;
-let url = `https://restcountries.eu/rest/v2/name/${search}`;
-
-input.addEventListener("input", debounce(onSearch, 2000));
+//todo: Function for input
 
 function onSearch() {
   const searchQuery = input.value;
+
   console.log(searchQuery);
+  fetchCountry(search)
+    .then(renderMarkUp)
+    .catch((err) => console.log(err));
 }
 
-let myFirstFetch = fetch(url);
-//console.log(myFirstFetch);
+//todo: Function for fetch
 
-myFirstFetch
-  .then((response) => {
-    //console.log(response);
+function fetchCountry(search) {
+  return fetch(`https://restcountries.eu/rest/v2/name/${search}`).then(
+    (response) => {
+      return response.json();
+    },
+  );
+}
 
-    return response.json();
-  })
-  .then((result) => {
-    //console.log(result);
+//todo: Function for render.
 
-    const array = result.capital;
-    //console.log(array);
+function renderMarkUp(country) {
+  const markUpFirst = templateFirst(country);
+  const markUp = templateSecond(country);
 
-    const item = templateFirst(result);
-    //console.log(item);
-
-    const secondItem = templateSecond(result);
-    //console.log(secondItem);
-
-    access.insertAdjacentHTML("afterbegin", item);
-
-    access.insertAdjacentHTML("afterbegin", secondItem);
-    //array.map((el) => console.log(el));
-  });
+  refs.countryContainer.innerHTML = markUpFirst;
+  refs.countryContainer.innerHTML = markUp; // const item = templateFirst(markUp);
+  // //console.log(item);
+  // const secondItem = templateSecond(markUp);
+  // //console.log(secondItem);
+  // refs.countryContainer.insertAdjacentHTML("afterbegin", item);
+  // refs.countryContainer.insertAdjacentHTML("afterbegin", secondItem);
+}
