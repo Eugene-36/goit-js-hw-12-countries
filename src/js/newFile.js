@@ -46,3 +46,10 @@ function renderMarkUp(country) {
 
   // refs.countryContainer.insertAdjacentHTML("afterbegin", secondItem);
 }
+
+// else if (massive >= 2 || massive >= 10) {
+//   // const values = Object.values(mass);
+//   // values.forEach((value) => {
+//   //   console.log(value.languages[0].name);
+//   // });
+// }
