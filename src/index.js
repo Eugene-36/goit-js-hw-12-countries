@@ -1,3 +1,7 @@
-import css from "./css/styles.css";
 
-import promise from "./js/inquire.js";
+import './js/coutry';
+import './styles.css';
+
+
+
+
