@@ -1,12 +1,13 @@
-"use strict";
 import countrySearch from "./services/country-service";
 import refs from "./refs";
 import articlesOneCountry from "../templates/templatesOneCountry.hbs";
 import countryList from "../templates/templatesManyCoutry.hbs";
 
+import "@pnotify/core/dist/PNotify.css";
+
 import "@pnotify/core/dist/BrightTheme.css";
 const { error } = require("@pnotify/core");
-var debounce = require("lodash.debounce");
+import debounce from "lodash.debounce";
 
 refs.searchForm.addEventListener(
   "input",
@@ -17,7 +18,9 @@ function countrySearchInputHandler(e) {
   e.preventDefault();
   clearArticlesContainer();
   const searchQuery = e.target.value;
-
+  if (!searchQuery) {
+    return;
+  }
   countrySearch
     .fetchArticles(searchQuery)
     .then((data) => {
@@ -45,8 +48,9 @@ function countrySearchInputHandler(e) {
 }
 
 function ListMarkup(countryes, template) {
-  const markup = countryes.map((count) => template(count)).join();
-  refs.articlesContainer.insertAdjacentHTML("afterbegin", markup);
+  const markup = countryes.map((count) => template(count)).join("");
+
+  refs.articlesContainer.insertAdjacentHTML("beforebegin", markup);
 }
 
 function clearArticlesContainer() {
